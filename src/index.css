@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Merriweather&family=Open+Sans&family=Poppins&family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Roboto+Mono:wght@400;600&display=swap");
+
+@tailwind base;
+@layer base {
+  .txt_field {
+    transition: max-height 0.5s ease-in-out;
+  }
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    scroll-behavior: smooth;
+  }
+
+  .overlay::after,
+  .overlay::before {
+    content: "";
+    position: absolute;
+    top: 158px;
+    right: 0;
+    background-color: #d9f99d;
+    width: 30px;
+    height: 30px;
+  }
+
+  .overlay::after {
+    border-radius: 0 20px 0 0;
+    background-color: white;
+  }
+
+  .txt_field span::before {
+    content: " ";
+    position: absolute;
+    top: 47px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: #2691d9;
+  }
+
+  .txt_field input:focus ~ label,
+  .txt_field input:valid ~ label {
+    top: 2px;
+    color: #2691d9;
+  }
+
+  .txt_field input:focus ~ span::before,
+  .txt_field input:valid ~ span::before {
+    width: 100%;
+  }
+  button{
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 12px;
+    background: rgb(251,146,60);
+    color: #fff;
+    border-radius:8px;
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
