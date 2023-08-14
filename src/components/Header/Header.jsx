@@ -19,7 +19,7 @@ const Header = () => {
           <img src={logo} alt="logo" className="w-48 h-48" />
         </div>
         <div
-          className={`w-full md:w-auto flex items-center flex-col md:flex-row absolute md:static top-16 transition-all duration-500 ease-in gap-5 md:gap-5 lg:gap-16 py-3  ${
+          className={`w-full md:w-auto flex items-center flex-col md:flex-row absolute md:static top-16 transition-all ease-in-out duration-500 ease-in gap-5 md:gap-5 lg:gap-16 py-3  ${
             showMenu
               ? "right-0 bg-[rgba(0,0,0,0.8)] text-lime-100"
               : "right-[-490px]"
