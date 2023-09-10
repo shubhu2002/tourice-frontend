@@ -1,8 +1,10 @@
 import CommonSection from "../shared/CommonSection";
 import Subscribe from "../shared/Subscribe";
 import Footer from "../components/Footer/Footer";
-import tree from "../data/assets/tree.png";
 import { useEffect } from "react";
+import {ImageData} from "../data/imgData";
+
+const {tree} = ImageData;
 
 const Contact = () => {
   useEffect(()=>{

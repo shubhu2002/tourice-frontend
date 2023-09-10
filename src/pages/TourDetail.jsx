@@ -1,23 +1,20 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { IndianRupee, Star } from "lucide-react";
 import Booking from "../components/Booking/Booking";
 import Footer from "../components/Footer/Footer";
 import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../hooks/config";
-import { useEffect } from "react";
 
 const TourDetail = () => {
   const { id } = useParams();
-  const {
-    data: tourData,
-    loading,
-    error,
-  } = useFetch(`${BASE_URL}/tours/${id}`);
+  const { data: tourData } = useFetch(`${BASE_URL}/tours/${id}`);
+  const { title, price, desc, rating, photo, topPlaces } = tourData;
 
-    useEffect(()=>{
-      window.scrollTo(0,0)
-    },[])
-  const { title, price, desc, rating, photo } = tourData;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+console.log(topPlaces)
   return (
     <>
       <main className="w-full flex flex-col lg:flex-row pt-24 gap-10 lg:gap-20 px-5 lg:px-28 pb-10 font-Poppins ">
@@ -36,9 +33,19 @@ const TourDetail = () => {
             </div>
             <h1 className="text-lg mt-4">Description</h1>
             <p className="text-sm">{desc}</p>
+            <h1 className="text-lg mt-4">Top Places</h1>
+            {Array.isArray(topPlaces) && topPlaces.length > 0 ? (
+              <ul className="flex flex-wrap gap-2">
+                {topPlaces.map((place, index) => (
+                  <li key={index} className="text-sm">{place} ||</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No top places available for this tour.</p>
+            )}
           </div>
         </section>
-        <section className="w-full lg:w-2/6 flex flex-col items-center gap-5">
+        <section className="w-full lg:w-2/6 flex flex-col items-center gap-5 ">
           <Booking tour={tourData} />
         </section>
       </main>

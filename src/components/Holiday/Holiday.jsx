@@ -1,12 +1,14 @@
 import HolidayCard from "./HolidayCard";
-import holiday from "./../../data/assets/holiday.png";
-import honeymoon from "./../../data/assets/honeymoon.jpg";
-import wild from "./../../data/assets/wild.jpg";
-import pilgrimage from "./../../data/assets/pilgrimage.jpg";
+import { ImageData } from "../../data/imgData";
+
+const { holiday, honeymoon, wild, pilgrimage } = ImageData;
 
 const Holiday = () => {
   return (
-    <section className=" w-[93%] flex flex-col lg:flex-row items-center mx-auto lg:mx-20 my-16 py-4 px-2 bg-secondaryBG dark:bg-borderClrDark rounded-2xl capitalize" id="holiday-themes">
+    <section
+      className=" w-[93%] flex flex-col lg:flex-row items-center mx-auto lg:mx-20 my-16 py-4 px-2 bg-secondaryBG dark:bg-borderClrDark rounded-2xl capitalize"
+      id="holiday-themes"
+    >
       <img src={holiday} alt="img" className="w-56 lg:w-96 lg:ml-[-90px]" />
       <div className="text-left flex flex-col gap-1">
         <h1 className="text-2xl">Explore</h1>

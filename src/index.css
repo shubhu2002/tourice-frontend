@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Roboto+Mono:wght@400;600&display=swap");
 
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @layer base {
   .txt_field {
     transition: max-height 0.5s ease-in-out;
@@ -67,7 +71,32 @@
     color: #fff;
     border-radius:8px;
   }
+
+  .latestBook{
+    animation: color 2s infinite ;
+  }
+
+  @keyframes color {
+    0%{
+      color: yellow;
+    }
+    50%{
+      color: blue;
+    }
+    100%{
+      color: white;
+    }
+  }
 }
-@tailwind components;
-@tailwind utilities;
+
+@layer utilities{
+  ::-webkit-scrollbar{
+    background: black;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: white;
+    border-radius: 30px;
+  }
+}
 

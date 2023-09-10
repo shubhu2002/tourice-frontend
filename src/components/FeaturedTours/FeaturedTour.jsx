@@ -1,4 +1,5 @@
 import TourCard from "../../shared/TourCard";
+import { Bars } from "react-loader-spinner";
 import useFetch from "../../hooks/useFetch";
 import { BASE_URL } from "../../hooks/config";
 
@@ -11,13 +12,26 @@ const FeaturedTour = () => {
 
   return (
     <section className="w-full mb-12">
-      <h1 className="w-full text-3xl font-Borel text-center md:text-4xl my-6  text-textDark dark:text-textLight">
+      <h1 className="w-full text-3xl font-Borel text-center md:text-3xl my-6">
         Popular Destinations
       </h1>
-      {error && <h1>{error}</h1>}
+      {loading && (
+        <div className="w-full flex justify-center">
+          <Bars
+            height="56"
+            width="56"
+            color="rgb(251,146,60)"
+            ariaLabel="bars-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            />
+        </div>
+      )}
+      {error && (
+        <h1 className="text-xl capitalize font-mono text-center">{error}</h1>
+      )}
       <div className=" w-[90%] px-5 grid grid-cols-2 lg:grid-cols-4  gap-y-10 place-items-center mx-auto  gap-x-14">
-        {loading && <h1>Loading........</h1>}
-
         {!loading &&
           !error &&
           featuredTours

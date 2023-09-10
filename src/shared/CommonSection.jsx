@@ -1,4 +1,6 @@
-import img2 from "../data/assets/img2.jpg"
+import {ImageData} from "../data/imgData"
+
+const {img2} = ImageData;
 
 const CommonSection = ({title}) =>{
 return(

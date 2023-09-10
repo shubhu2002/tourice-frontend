@@ -1,79 +1,81 @@
 import { MapPin, Search } from "lucide-react";
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { BASE_URL } from "../hooks/config";
+import { ArrowRight } from "lucide-react";
+import useFetch from "../hooks/useFetch";
+import { Bars } from "react-loader-spinner";
 
 const SearchBar = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const date = today.getDate();
-
+  const { data: tourData, loading, error } = useFetch(`${BASE_URL}/tours/`);
+  const [isOpen, setIsOpen] = useState(false);
   const locationRef = useRef("");
-  const navigate = useNavigate();
 
-  const searchHandler = async (e) => {
-    const location = locationRef.current.value;
-    
-    const res = await fetch(
-      `${BASE_URL}/tours/search/getTourBySearch?title=${location}`
-      );
-      if (!res.ok) {
-        alert("Something Went Wrong");
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (locationRef.current && !locationRef.current.contains(event.target)) {
+        setIsOpen(false);
       }
-      
-      const result = await res.json();
-    navigate(`/tour/search?title=${location}`, { state: result.data });
+    };
+    document.addEventListener("click", handleDocumentClick);
 
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
+
+  const toggleOptions = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className="bg-white dark:bg-[rgba(0,0,0,0.3)] flex flex-col md:flex-row rounded-lg mt-4 text-sm p-1 border-2 border-borderClr">
-      <div className="border-b-2 md:border-b-0 md:border-r-2 border-borderClr dark:border-borderClrDark pl-2 py-1">
-        <h6 className="flex gap-1">
-          <MapPin color="#34d399" /> Location
-        </h6>
+    <div className="w-5/6 md:w-3/6 bg-white relative dark:bg-[rgba(0,0,0,0.8)] flex flex-row justify-between rounded-lg mt-4 text-sm p-1">
+      <div className="w-full gap-6 items-center px-4 py-3 flex">
+        <MapPin color="#34d399" />
         <input
-          type="text" 
+          type="text"
           ref={locationRef}
           required
-          placeholder="Where You Wants To Go..."
-          className="w-72 md:w-52 outline-none bg-transparent "
+          placeholder="Where You Want To Go....."
+          className="w-full outline-none bg-transparent tracking-widest"
+          readOnly
+          onClick={toggleOptions}
         />
+        <ArrowRight />
       </div>
-      <div className="border-b-2 md:border-b-0 md:border-r-2 border-borderClr dark:border-borderClrDark pl-2 pr-2 py-1">
-        <h6 className="flex gap-1">
-          <MapPin color="#34d399" /> Date
-        </h6>
-        <input
-          type="date"
-          required
-          id="date"
-          min={`${year}-${month.toString().padStart(2, "0")}-${date
-            .toString()
-            .padStart(2, "0")}`}
-          className="w-72 md:w-52 outline-none bg-inherit text-gray-400"
-        />
-      </div>
-      <div className=" pl-2 py-1">
-        <h6 className=" flex gap-1">
-          <MapPin color="#34d399" /> Persons
-        </h6>
-        <input
-          type="number"
-          min="1"
-          id="guests"
-          required
-          placeholder="Total Guests"
-          className="w-72 md:w-52 outline-none bg-transparent"
-        />
-      </div>
-      <button
-        className="grid place-items-center rounded-lg"
-        onClick={searchHandler}
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } w-[100%] h-44 absolute top-16 left-0 right-0 bg-white dark:bg-[rgba(0,0,0,0.8)] rounded-lg overflow-y-scroll`}
       >
-        <Search size={36} strokeWidth={1.5} color="#ffff" />
-      </button>
+        {loading && (
+          <div className="w-full h-full flex items-center justify-center">
+            <Bars
+              height="42"
+              width="42"
+              color="rgb(255,255,255,0.5)"
+              ariaLabel="bars-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        )}
+        {error && (
+          <h1 className=" h-full text-xl capitalize font-mono flex items-center justify-center">
+            {error}
+          </h1>
+        )}
+        {tourData.map((item) => (
+          <Link
+            to={`/tour/${item._id}`}
+            key={item._id}
+            className="list-none text-lg flex justify-center py-2 hover:bg-white/10"
+          >
+            {item.title}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

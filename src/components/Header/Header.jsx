@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   const navData = [
-    { title: "Home", url: "/" },
+    { title: "Home", url: "" },
     { title: "About", url: "/about" },
     { title: "Tours", url: "/tour" },
     { title: "Contacts", url: "/contact" },

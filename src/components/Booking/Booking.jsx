@@ -9,8 +9,10 @@ const Booking = ({ tour }) => {
   const month = today.getMonth() + 1;
   const date = today.getDate();
 
-  const { price, rating, title } = tour;
   const navigate = useNavigate();
+
+  const { price, rating, title } = tour;
+
   const [booking, setBooking] = useState({
     userId: "01",
     userEmail: "example@gmaiil.com",
@@ -20,16 +22,20 @@ const Booking = ({ tour }) => {
     guests: 0,
     date: "",
   });
+
   const handleChange = (event) => {
     setBooking((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     }));
   };
 
+  const serviceFee = booking.guests === 0 ? 0 : 24;
+  const totalAmt = Number(price) * Number(booking.guests) + Number(serviceFee);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(booking.tourName);
     try {
       const res = await fetch(`${BASE_URL}/booking`, {
         method: "post",
@@ -52,8 +58,6 @@ const Booking = ({ tour }) => {
       alert(error.messsage);
     }
   };
-  var serviceFee = booking.guests===0 ? 0 : 24 ;
-  var totalAmount = Number(price) * Number(booking.guests) + Number(serviceFee);
 
   return (
     <>
@@ -118,9 +122,7 @@ const Booking = ({ tour }) => {
           </div>
 
           <div className="flex w-full justify-between pt-3 text-sm">
-            <h1>
-              Total Guests
-            </h1>
+            <h1>Total Guests</h1>
             <span>{booking.guests}</span>
           </div>
           <div className="flex w-full justify-between border-b border-inputBorder  pb-2 text-sm">
@@ -129,7 +131,7 @@ const Booking = ({ tour }) => {
           </div>
           <div className="flex w-full justify-between  font-extrabold">
             <h1 className=" ">Total</h1>
-            <span>₹{totalAmount}</span>
+            <span>₹{totalAmt}</span>
           </div>
           <button className="md:px-7 py-2 text-base">Book Now</button>
         </form>

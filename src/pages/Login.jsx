@@ -1,38 +1,50 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { XCircle } from "lucide-react";
 import { ImageData } from "../data/imgData";
-import { useState,useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../hooks/config";
 
+const { goa } = ImageData;
 const Login = () => {
-  const { Goa } = ImageData;
-
   const [credentials, setCredentials] = useState({
     userName: "",
     email: "",
     password: "",
   });
 
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(credentials);
-    setCredentials({
-      userName: "",
-      email: "",
-      password: "",
-    });
+    try {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: "post",
+        headers: { "content-type": "application/json"},
+        body: JSON.stringify(credentials),
+      });
+      const result = await res.json();
+
+      if (!res.ok) alert(result.message);
+
+      dispatch({ type: "REGISTER_SUCCESS" });
+      navigate("/login-register");
+    } catch (error) {
+      alert(error.message);
+    }
   };
   const [show, setShow] = useState(true);
   const handlePage = () => {
     setShow(!show);
   };
 
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main className="w-full h-screen grid place-items-center">
@@ -54,7 +66,7 @@ const Login = () => {
             </h1>
           </div>
           <img
-            src={Goa}
+            src={goa}
             alt="carousel"
             className="w-full h-full brightness-[0.3]"
           />
