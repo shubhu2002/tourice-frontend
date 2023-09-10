@@ -14,7 +14,6 @@ const TourDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-console.log(topPlaces)
   return (
     <>
       <main className="w-full flex flex-col lg:flex-row pt-24 gap-10 lg:gap-20 px-5 lg:px-28 pb-10 font-Poppins ">
