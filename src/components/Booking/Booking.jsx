@@ -123,7 +123,7 @@ const Booking = ({ tour }) => {
 
           <div className="flex w-full justify-between pt-3 text-sm">
             <h1>Total Guests</h1>
-            <span>{booking.guests}</span>
+            <span>{booking.guests} x {price}</span>
           </div>
           <div className="flex w-full justify-between border-b border-inputBorder  pb-2 text-sm">
             <h1>Service Charges*</h1>
