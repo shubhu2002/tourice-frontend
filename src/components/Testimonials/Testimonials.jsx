@@ -1,18 +1,20 @@
-import TestimonialsCard from "./TestimonialsCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { ImageData } from "./../../data/imgData";
+import { ImageData, testimonialsData } from "./../../data";
+import { Star } from "lucide-react";
 
-const { airplane } = ImageData;
+const StarIcon = () => {
+  return <Star stroke="orange" fill="yellow" width={14} />;
+};
 
 const Testimonials = () => {
   return (
     <section className="w-full  flex flex-col items-center relative pt-8 my-12 dark:bg-secondaryBG ">
       <img
-        src={airplane}
+        src={ImageData.airplane}
         alt="tree"
         className="w-28 lg:w-72 absolute left-0 lg:-left-7 top-36 lg:top-0 opacity-80 -rotate-[30deg]"
       />
@@ -51,41 +53,46 @@ const Testimonials = () => {
           loop={true}
           className="mySwiper drop-shadow-2xl"
         >
-          <SwiperSlide>
-            <TestimonialsCard
-              name="Akash Tomar"
-              tag="Photographer"
-              quote="I think this is the best traveller service i have ever tried and I also
-        recommended it to you"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialsCard
-              name="Suraj Gaud"
-              tag="Traveller"
-              quote="Thanks to Tourice i can now realize my dream of travelling around the world"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialsCard
-              name="Utsav Dev"
-              tag="Socialist"
-              quote="Tourice helps me a lot in finding intresting tourist destinations"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialsCard
-              name="Sumit Saxena"
-              tag="Traveller"
-              quote="I m totally comfort during travel experience and also it make my journey so ease."
-            />
-          </SwiperSlide>
+          {testimonialsData.map((item) => {
+            return (
+              <SwiperSlide>
+                <div
+                  key={item.id}
+                  className=" bg-white border-2 text-center flex flex-col items-center rounded-3xl relative dark:text-black"
+                >
+                  <div className="overlay w-full flex flex-col items-center bg-lime-200 rounded-[20px_20px_0px_20px] py-2">
+                    <img
+                      src={ImageData.man}
+                      alt=""
+                      width={70}
+                      className=" bg-center mb-2"
+                    />
+                    <h1 className="font-semibold text-textDark">{item.name}</h1>
+                    <span className="text-xs">{item.tag}</span>
+                    <span className="flex gap-1">
+                      {Array(5)
+                        .fill(true)
+                        .map((item, index) => (
+                          <StarIcon key={index} />
+                        ))}
+                    </span>
+                  </div>
+                  <p className="w-56 text-xs mt-5 mb-3 px-1">"{item.quote}"</p>
+                  <img
+                    src={ImageData.comma}
+                    alt="comma"
+                    className="w-7 text-gray -ml-3 mb-3"
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
           <hr className="my-2" />
           ...
         </Swiper>
       </div>
       <img
-        src={airplane}
+        src={ImageData.airplane}
         alt="tree"
         className="w-36 lg:w-56 absolute right-0 bottom-0 opacity-80 "
       />

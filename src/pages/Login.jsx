@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { XCircle } from "lucide-react";
-import { ImageData } from "../data/imgData";
+import { ImageData } from "../data";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../hooks/config";

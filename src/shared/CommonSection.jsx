@@ -1,4 +1,4 @@
-import {ImageData} from "../data/imgData"
+import {ImageData} from "../data"
 
 const {img2} = ImageData;
 

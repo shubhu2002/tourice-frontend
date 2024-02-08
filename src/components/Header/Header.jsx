@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import DarkMode from "../../shared/DarkMode";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { ImageData } from "../../data/imgData";
+import { ImageData } from "../../data";
 
 const { logo } = ImageData;
 

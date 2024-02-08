@@ -2,7 +2,7 @@ import CommonSection from "../shared/CommonSection";
 import Subscribe from "../shared/Subscribe";
 import Footer from "../components/Footer/Footer";
 import { useEffect } from "react";
-import {ImageData} from "../data/imgData";
+import {ImageData} from "../data";
 
 const {tree} = ImageData;
 
