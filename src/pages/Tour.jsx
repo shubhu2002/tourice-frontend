@@ -1,18 +1,9 @@
-import CommonSection from "../shared/CommonSection";
-import SearchBar from "../shared/SearchBar";
+import { CommonSection, SearchBar, TourCard, Subscribe } from "../shared";
 import { Bars } from "react-loader-spinner";
-import TourCard from "../shared/TourCard";
-import Subscribe from "../shared/Subscribe";
-import Footer from "../components/Footer/Footer";
-
-import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../hooks/config";
 
 const Tour = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const { data: tourData, loading, error } = useFetch(`${BASE_URL}/tours/`);
 
   return (
@@ -42,7 +33,6 @@ const Tour = () => {
             })}
         </div>
         <Subscribe />
-        <Footer />
       </section>
     </main>
   );

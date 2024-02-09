@@ -1,6 +1,6 @@
-import { ImageData } from "../../data";
+import { ImageData } from "../data";
 
-import { holidayData } from "../../data";
+import { holidayData } from "../data";
 
 const Holiday = () => {
   return (

@@ -1,17 +1,14 @@
-import FeaturedTour from "../components/FeaturedTours/FeaturedTour";
-import Hero from "../components/Hero/Hero";
-import Holiday from "../components/Holiday/Holiday";
-import Offers from "../components/Offers/Offers";
-import Service from "../components/ServiceSection/Service";
-import Testimonials from "../components/Testimonials/Testimonials";
-import Subscribe from "../shared/Subscribe";
-import Footer from "../components/Footer/Footer"
-import { useEffect } from "react";
+import {
+  Hero,
+  Service,
+  FeaturedTour,
+  Holiday,
+  Testimonials,
+  Offers,
+} from "../components";
+import { Subscribe } from "../shared";
 
 const Home = () => {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  })
   return (
     <>
       <Hero />
@@ -20,8 +17,7 @@ const Home = () => {
       <Holiday />
       <Testimonials />
       <Offers />
-      <Subscribe/>
-      <Footer/>
+      <Subscribe />
     </>
   );
 };

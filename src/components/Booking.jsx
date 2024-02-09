@@ -1,7 +1,7 @@
 import { IndianRupeeIcon, Star } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../hooks/config";
+import { BASE_URL } from "../hooks/config";
 
 const Booking = ({ tour }) => {
   const today = new Date();

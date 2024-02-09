@@ -1,5 +1,5 @@
 import { MapPin, Search } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { memo ,useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../hooks/config";
 import { ArrowRight } from "lucide-react";
@@ -80,4 +80,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default memo(SearchBar);

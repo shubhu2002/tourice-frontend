@@ -1,11 +1,6 @@
-import Footer from "../components/Footer/Footer";
-import CommonSection from "../shared/CommonSection";
-import { useEffect } from "react";
+import { CommonSection } from "../shared";
 
 const About = () => {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
   return (
     <section className="text-sm pt-[90px]">
       <CommonSection title={`All About Us`} />
@@ -102,7 +97,6 @@ const About = () => {
           </ul>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

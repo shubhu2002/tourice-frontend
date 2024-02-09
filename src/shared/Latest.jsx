@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 const Latest = () =>{
     return(<div className="w-32 h-32 fixed bottom-5 right-5 flex justify-center items-center flex-col rounded-full bg-rose-700 border-2 border-white z-50">
@@ -7,4 +8,4 @@ const Latest = () =>{
     </div>)
 };
 
-export default Latest;
+export default memo(Latest);

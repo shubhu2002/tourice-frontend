@@ -1,5 +1,7 @@
 import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { memo } from "react";
+
 
 const TourCard = ({tour}) => {
   const {_id,title,price,desc,rating,photo} = tour;
@@ -31,4 +33,4 @@ const TourCard = ({tour}) => {
     </div>
   );
 };
-export default TourCard;
+export default memo(TourCard);

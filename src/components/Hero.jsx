@@ -1,5 +1,5 @@
-import { ImageData } from "../../data";
-import SearchBar from "../../shared/SearchBar";
+import { ImageData } from "../data";
+import SearchBar from "../shared/SearchBar";
 
 const { leaves, leaves2 } = ImageData;
 

@@ -1,7 +1,7 @@
-import TourCard from "../../shared/TourCard";
+import TourCard from "../shared/TourCard";
 import { Bars } from "react-loader-spinner";
-import useFetch from "../../hooks/useFetch";
-import { BASE_URL } from "../../hooks/config";
+import useFetch from "../hooks/useFetch";
+import { BASE_URL } from "../hooks/config";
 
 const FeaturedTour = () => {
   const {

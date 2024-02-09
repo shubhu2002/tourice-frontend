@@ -1,11 +1,10 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { XCircle } from "lucide-react";
 import { ImageData } from "../data";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../hooks/config";
 
-const { goa } = ImageData;
 const Login = () => {
   const [credentials, setCredentials] = useState({
     userName: "",
@@ -24,7 +23,7 @@ const Login = () => {
     try {
       const res = await fetch(`${BASE_URL}/auth/register`, {
         method: "post",
-        headers: { "content-type": "application/json"},
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(credentials),
       });
       const result = await res.json();
@@ -41,10 +40,6 @@ const Login = () => {
   const handlePage = () => {
     setShow(!show);
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <main className="w-full h-screen grid place-items-center">
@@ -66,7 +61,7 @@ const Login = () => {
             </h1>
           </div>
           <img
-            src={goa}
+            src={ImageData.goa}
             alt="carousel"
             className="w-full h-full brightness-[0.3]"
           />

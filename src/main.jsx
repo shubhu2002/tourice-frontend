@@ -1,19 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Header from "./components/Header/Header";
 import { HashRouter } from "react-router-dom";
-import Routers from "./router/Router";
+import Routers from "./routes";
 import { AuthContextProvider } from "../context/AuthContext";
-import Latest from "./shared/Latest";
+import {Latest} from "./shared";
+import { Header,Footer } from "./components";
+import ScrollToTop from "./ScrollToTop";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
       <HashRouter>
+        <ScrollToTop/>
         <Header />
-        <Latest/>
+        {/* <Latest/> */}
         <Routers />
+        <Footer/>
       </HashRouter>
     </AuthContextProvider>
   </React.StrictMode>

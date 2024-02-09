@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { IndianRupee, Star } from "lucide-react";
-import Booking from "../components/Booking/Booking";
-import Footer from "../components/Footer/Footer";
+import {Booking,Footer} from "../components"
 import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../hooks/config";
 
@@ -11,9 +9,6 @@ const TourDetail = () => {
   const { data: tourData } = useFetch(`${BASE_URL}/tours/${id}`);
   const { title, price, desc, rating, photo, topPlaces } = tourData;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <>
       <main className="w-full flex flex-col lg:flex-row pt-24 gap-10 lg:gap-20 px-5 lg:px-28 pb-10 font-Poppins ">

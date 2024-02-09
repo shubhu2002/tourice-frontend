@@ -1,15 +1,7 @@
-import CommonSection from "../shared/CommonSection";
-import Subscribe from "../shared/Subscribe";
-import Footer from "../components/Footer/Footer";
-import { useEffect } from "react";
-import {ImageData} from "../data";
-
-const {tree} = ImageData;
+import { CommonSection, Subscribe } from "../shared";
+import { ImageData } from "../data";
 
 const Contact = () => {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
   return (
     <section className="w-full pt-[90px]">
       <CommonSection title={`Contact us`} />
@@ -23,7 +15,7 @@ const Contact = () => {
         <h1 className="text-xl text-center">Contact Information </h1>
         <div className="w-full lg:px-28 relative flex flex-col gap-6">
           <img
-            src={tree}
+            src={ImageData.tree}
             alt="tree"
             className="absolute z-0 w-60 lg:w-52 opacity-50 md:opacity-100 -right-5 bottom-0 lg:right-36 lg:-top-10"
           />
@@ -55,7 +47,6 @@ const Contact = () => {
         </h1>
       </main>
       <Subscribe />
-      <Footer />
     </section>
   );
 };

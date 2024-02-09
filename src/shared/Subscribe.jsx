@@ -1,6 +1,5 @@
 import { ImageData } from "../data";
-
-const {subscribe} = ImageData;
+import { memo } from "react";
 
 const Subscribe = () => {
   return (
@@ -16,9 +15,7 @@ const Subscribe = () => {
             className="text-sm outline-none w-full pr-3 bg-transparent"
             required
           />
-          <button className="p-2 rounded">
-            Subscribe
-          </button>
+          <button className="p-2 rounded">Subscribe</button>
         </form>
         <p className="px-4 md:px-0 md:w-96 text-xs">
           Update yourself with tourice by getting latest offers and updates on
@@ -26,7 +23,7 @@ const Subscribe = () => {
         </p>
       </div>
       <img
-        src={subscribe}
+        src={ImageData.subscribe}
         alt="img"
         className="w-28 md:w-52 drop-shadow-2xl mb-3 md:mb-0"
       />
@@ -34,4 +31,4 @@ const Subscribe = () => {
   );
 };
 
-export default Subscribe;
+export default memo(Subscribe);
